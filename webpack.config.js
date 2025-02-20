@@ -5,14 +5,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     ...defaultConfig,
-    mode: process.env.NODE_ENV || 'development',  // 🔹 Sesuaikan mode berdasarkan environment
+    mode: process.env.NODE_ENV || 'development',
     devtool: process.env.NODE_ENV === 'development' ? 'source-map' : false, // 🔹 Source map hanya untuk dev
     entry: {
         admin: './src/resources/javascript/admin/index.jsx',
         frontend: './src/resources/javascript/frontend/index.jsx',
     },
     output: {
-        path: path.resolve(__dirname, "assets"), // Semua file ke dalam folder "assets"
+        path: path.resolve(__dirname, "assets"),
         filename: "js/[name].min.js",
     },
     optimization: {
@@ -32,20 +32,20 @@ module.exports = {
                 },
             },
             {
-                test: /\.css$/,  // 🔹 Tangani file .css
+                test: /\.css$/,
                 use: [
-                    MiniCssExtractPlugin.loader, // Ekstrak CSS ke file
-                    "css-loader", // Menafsirkan @import & url()
-                    "postcss-loader" // Menjalankan PostCSS (untuk Tailwind)
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    "postcss-loader"
                 ]
             },
             {
-                test: /\.(scss|sass)$/,  // 🔹 Tangani file .scss dan .sass
+                test: /\.(scss|sass)$/,
                 use: [
-                    MiniCssExtractPlugin.loader, // Ekstrak CSS ke file
-                    "css-loader", // Menafsirkan @import & url()
-                    "sass-loader",  // Mengonversi SCSS ke CSS
-                    "postcss-loader" // Menjalankan PostCSS (untuk Tailwind)
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    "sass-loader",
+                    "postcss-loader"
                 ]
             }
         ]
@@ -55,31 +55,9 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "css/[name].min.css", // Semua CSS ke "assets/css/"
+            filename: "css/[name].min.css",
         }),
     ]
 };
 
-// plugins: [
-//     new MiniCssExtractPlugin(),
-//     // {
-
-//     //     apply: (compiler) => {
-//     //         compiler.hooks.done.tap('ZipPlugin', (stats) => {
-//     //             if (stats.compilation.options.mode === 'production') { // ✅ Only in build mode
-//     //                 const zipPath = path.join(__dirname, 'artistudio-popup.zip');
-//     //                 const output = fs.createWriteStream(zipPath);
-//     //                 const archive = archiver('zip', { zlib: { level: 9 } });
-
-//     //                 output.on('close', () => console.log(`✅ ZIP created: ${zipPath} (${archive.pointer()} bytes)`));
-//     //                 archive.on('error', (err) => console.error('❌ ZIP error:', err));
-
-//     //                 archive.pipe(output);
-//     //                 archive.directory('build', 'artistudio-popup');
-//     //                 archive.finalize();
-//     //             }
-//     //         });
-//     //     }
-//     // }
-// ]
 
