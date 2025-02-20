@@ -1,0 +1,38 @@
+{
+  "name": "popzy",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "Schorpy",
+  "scripts": {
+    "tailwind:build": "npx tailwindcss -i ./src/resources/css/tailwind.css -o ./assets/css/index.css",
+    "tailwind:watch": "npm run tailwind:build -- --watch",
+    "build": "wp-scripts build --webpack-copy-php && npm run tailwind:build",
+    "start": "wp-scripts start --webpack-copy-php & npm run tailwind:watch",
+    "watch": "concurrently \"wp-scripts start\" \"npx postcss src/resources/css/tailwind.css -o assets/css/style.css --watch",
+    "format": "wp-scripts format",
+    "lint:js": "wp-scripts lint-js",
+    "lint:css": "wp-scripts lint-style"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.0.6",
+    "@wordpress/block-serialization-default-parser": "^5.18.0",
+    "@wordpress/blocks": "^14.7.0",
+    "@wordpress/element": "^6.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.84.0"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^25.0.0",
+    "archiver": "^7.0.1",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.2",
+    "mini-css-extract-plugin": "^2.9.2",
+    "postcss": "^8.5.2",
+    "postcss-cli": "^11.0.0",
+    "postcss-loader": "^8.1.1",
+    "tailwindcss": "^4.0.6"
+  },
+  "description": "WP plugin with React and @wordpress/scripts",
+  "license": "ISC"
+}
