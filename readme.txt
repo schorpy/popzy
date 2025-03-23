@@ -3,7 +3,7 @@ Contributors: schorpy
 Tags: popup, modal, lightbox, popup maker, popup builder 
 Requires at least: 4.9  
 Tested up to: 6.7  
-Requires PHP: 5.6  
+Requires PHP: 7.0 
 Stable tag: 1.0.0  
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt  
@@ -42,3 +42,6 @@ Yes, you can create unlimited popups.
 
 = 1.0.0 =  
 First stable version of Popzy.  
+
+== Resources ==
+Source files for minified JavaScript and CSS are included in the /src/resources directory.

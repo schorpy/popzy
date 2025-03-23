@@ -2,6 +2,8 @@
 
 namespace Popzy\Traits;
 
+if (! defined('ABSPATH')) exit;
+
 trait Singleton
 {
     private static $instance;

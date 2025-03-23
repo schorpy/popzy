@@ -2,6 +2,8 @@
 
 namespace Popzy\Helpers;
 
+if (! defined('ABSPATH')) exit;
+
 class Cache
 {
     private static $cache_dir;
@@ -16,7 +18,7 @@ class Cache
 
         WP_Filesystem();
 
-        self::$cache_dir = WP_CONTENT_DIR . '/popzy/';
+        self::$cache_dir = wp_upload_dir()['basedir'] . '/popzy/';
 
         if (!$wp_filesystem->is_dir(self::$cache_dir)) {
             $wp_filesystem->mkdir(self::$cache_dir, 0755);
@@ -103,7 +105,7 @@ class Cache
     {
         global $wp_filesystem;
 
-        self::$cache_dir = WP_CONTENT_DIR . '/popzy/';
+        self::$cache_dir = wp_upload_dir()['basedir'] . '/popzy/';
 
         if ($wp_filesystem->is_dir(self::$cache_dir)) {
             $wp_filesystem->delete(self::$cache_dir, true); // `true` deletes the directory and its contents

@@ -2,27 +2,28 @@
 
 namespace Popzy\Core;
 
-use Popzy\Traits\Singleton;
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
+use Popzy\Core\Api;
+use Popzy\Helpers\Assets;
+use Popzy\Helpers\Code;
+use Popzy\Helpers\CPTs;
+use Popzy\Helpers\Metaboxes;
+
 
 class Plugin
 {
-    use Singleton;
-
 
     public static function init()
     {
-        $controllers_path = __DIR__ . '/../Controllers';
-        $namespace = 'Popzy\\Controllers\\';
-
-        foreach (scandir($controllers_path) as $file) {
-            if (pathinfo($file, PATHINFO_EXTENSION) === 'php') {
-                $class_name = $namespace . pathinfo($file, PATHINFO_FILENAME);
-                if (class_exists($class_name)) {
-                    (new $class_name())->register();
-                }
-            }
-        }
-
+       
+        Code::getInstance();
+        Api::get_instance()->init();
+        Assets::getInstance();
+        CPTs::getInstance();
+        Metaboxes::getInstance();
         \Popzy\Helpers\Cache::init();
     }
     public static function activate() {}

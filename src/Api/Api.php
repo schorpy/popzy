@@ -2,6 +2,8 @@
 
 namespace Popzy\Api;
 
+if (! defined('ABSPATH')) exit;
+
 use Popzy\Traits\Singleton;
 use Popzy\Models\PopupModel;
 

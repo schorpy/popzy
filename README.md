@@ -28,7 +28,7 @@ composer install
 Start the development server:
 
 ```sh
-npm run start
+npm run watch
 ```
 
 ## Build
@@ -37,3 +37,10 @@ Compile and optimize the plugin for production:
 ```sh
 npm run build
 ```
+## Resources
+- CSS & Styling: Source files for Tailwind CSS and SASS are available in the /src/resources/css directory.
+- JavaScript & React: JSX, TSX, and JavaScript files are available in the /src/resources/javascript directory.
+
+## Minified Assets:
+-Minified CSS files are located in /assets/css.
+-Minified JavaScript files are located in /assets/js.

@@ -1,3 +1,9 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
+?>
 <div class="popzy-settings">
     <div id="popzy-metabox-content">
         <div class="popzy-container">
@@ -62,21 +68,27 @@
                                         <div class="flex">
                                             <select id="select_target" name="popzy_target[select]" style="width: 100%;">
                                                 <option value="">— Select an Option —</option>
-                                                <?php foreach ($options as $option): ?>
-                                                    <?php if (isset($option['group'])): ?>
-                                                        <optgroup label="<?php echo esc_html($option['text']) ?>">
-                                                            <?php foreach ($option['group'] as $item): ?>
-                                                                <option value="<?php echo esc_attr($item['type']) ?>_<?php echo esc_attr($item['id']) ?>" <?php echo in_array($item['type'] . '_' . $item['id'], (array) $selected) ? 'selected' : '' ?>>
-                                                                    <?php echo esc_html($item['text']) ?>
-                                                                </option>
-                                                            <?php endforeach; ?>
-                                                        </optgroup>
-                                                    <?php else: ?>
-                                                        <option value="<?php echo esc_attr($option['id']) ?>" <?php echo in_array($option['id'], (array) $selected) ? 'selected' : '' ?>>
-                                                            <?php echo esc_html($option['text']) ?>
-                                                        </option>
-                                                    <?php endif; ?>
-                                                <?php endforeach; ?>
+                                                <?php if (!empty($data['options'])): ?>
+                                                    <?php foreach ($data['options'] as $option): ?>
+                                                        <?php if (!empty($option['group']) && is_array($option['group'])): ?>
+                                                            <optgroup label="<?php echo esc_attr($option['text']); ?>">
+                                                                <?php foreach ($option['group'] as $item): ?>
+                                                                    <option value="<?php echo esc_attr($item['type'] . '_' . $item['id']); ?>"
+                                                                        <?php echo (isset($data['selected']) && in_array($item['type'] . '_' . $item['id'], (array) $data['selected'], true)) ? 'selected' : ''; ?>>
+                                                                        <?php echo esc_html($item['text']); ?>
+                                                                    </option>
+                                                                <?php endforeach; ?>
+                                                            </optgroup>
+                                                        <?php else: ?>
+                                                            <option value="<?php echo esc_attr($option['id']); ?>"
+                                                                <?php echo (isset($data['selected']) && in_array($option['id'], (array) $data['selected'], true)) ? 'selected' : ''; ?>>
+                                                                <?php echo esc_html($option['text']); ?>
+                                                            </option>
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
+                                                <?php endif; ?>
+
+
 
                                             </select>
 
@@ -91,8 +103,3 @@
         </div>
     </div>
 </div>
-<script>
-    jQuery(document).ready(function($) {
-        $('#select_target').select2();
-    });
-</script>

@@ -2,6 +2,10 @@
 
 namespace Popzy\Models;
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 use Popzy\Helpers\Cache;
 
 class PopupModel
