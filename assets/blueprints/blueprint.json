@@ -1,0 +1,30 @@
+{
+    "siteOptions": {
+        "blogname": "Popzy Preview"
+    },
+    "landingPage": "\/wp-admin\/edit.php?post_type=popzy",
+    "preferredVersions": {
+        "php": "8.0",
+        "wp": "latest"
+    },
+    "features": {
+        "networking": true
+    },
+    "steps": [
+        {
+            "step": "installPlugin",
+            "pluginZipFile": {
+                "resource": "url",
+                "url": "https:\/\/downloads.wordpress.org\/plugin\/popzy.1.0.0.zip"
+            },
+            "options": {
+                "activate": true
+            }
+        },
+        {
+            "step": "login",
+            "username": "admin",
+            "password": "password"
+        }
+    ]
+}
